@@ -62,9 +62,12 @@
   --color-surface-elevated: var(--surface-elevated);
   --color-lime: var(--lime);
   --color-lime-foreground: var(--lime-foreground);
+  --color-royal: var(--royal);
+  --color-cyan-glow: var(--cyan-glow);
 
   --shadow-glow: 0 0 60px -10px var(--lime);
-  --shadow-soft: 0 20px 60px -20px oklch(0 0 0 / 0.5);
+  --shadow-soft: 0 20px 60px -20px oklch(0 0 0 / 0.6);
+  --shadow-royal: 0 20px 60px -15px oklch(0.45 0.22 264 / 0.55);
 }
 
 :root {
