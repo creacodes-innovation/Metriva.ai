@@ -41,20 +41,21 @@ export function CsvUpload() {
       skipEmptyLines: true,
       complete: (res) => {
         try {
-          const rows = res.data
-            .map((r) => {
-              const name = pick(r, ["name", "full name", "employee name"]);
-              const employeeId = pick(r, ["id", "employee id", "emp id", "employeeid"]);
-              const heightStr = pick(r, ["height", "height (cm)", "height_cm"]);
-              const genderRaw = pick(r, ["gender", "sex"]).toUpperCase();
-              const department = pick(r, ["department", "dept", "team"]);
-              const height = parseFloat(heightStr);
-              if (!name || !employeeId || isNaN(height)) return null;
-              const gender: Person["gender"] =
-                genderRaw.startsWith("M") ? "M" : genderRaw.startsWith("F") ? "F" : "U";
-              return { name, employeeId, height, gender, department: department || undefined };
-            })
-            .filter((r): r is Omit<Person, "id" | "status"> => r !== null);
+          const rows: Omit<Person, "id" | "status">[] = [];
+          for (const r of res.data) {
+            const name = pick(r, ["name", "full name", "employee name"]);
+            const employeeId = pick(r, ["id", "employee id", "emp id", "employeeid"]);
+            const heightStr = pick(r, ["height", "height (cm)", "height_cm"]);
+            const genderRaw = pick(r, ["gender", "sex"]).toUpperCase();
+            const department = pick(r, ["department", "dept", "team"]);
+            const height = parseFloat(heightStr);
+            if (!name || !employeeId || isNaN(height)) continue;
+            const gender: Person["gender"] =
+              genderRaw.startsWith("M") ? "M" : genderRaw.startsWith("F") ? "F" : "U";
+            const row: Omit<Person, "id" | "status"> = { name, employeeId, height, gender };
+            if (department) row.department = department;
+            rows.push(row);
+          }
 
           if (rows.length === 0) {
             setError("No valid rows. Required columns: name, employee id, height, gender.");
