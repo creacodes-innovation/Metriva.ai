@@ -19,14 +19,56 @@ export function CsvUpload() {
 
   function loadSample() {
     const sample: Omit<Person, "id" | "status">[] = [
-      { employeeId: "EMP-1042", name: "Aarav Sharma", gender: "M", height: 178, department: "Operations" },
+      {
+        employeeId: "EMP-1042",
+        name: "Aarav Sharma",
+        gender: "M",
+        height: 178,
+        department: "Operations",
+      },
       { employeeId: "EMP-1043", name: "Priya Iyer", gender: "F", height: 162, department: "HR" },
-      { employeeId: "EMP-1044", name: "Rohan Mehta", gender: "M", height: 184, department: "Logistics" },
-      { employeeId: "EMP-1045", name: "Neha Kapoor", gender: "F", height: 168, department: "Operations" },
-      { employeeId: "EMP-1046", name: "Vikram Rao", gender: "M", height: 172, department: "Security" },
-      { employeeId: "EMP-1047", name: "Ishita Banerjee", gender: "F", height: 159, department: "HR" },
-      { employeeId: "EMP-1048", name: "Karthik Nair", gender: "M", height: 176, department: "Logistics" },
-      { employeeId: "EMP-1049", name: "Sana Khan", gender: "F", height: 165, department: "Operations" },
+      {
+        employeeId: "EMP-1044",
+        name: "Rohan Mehta",
+        gender: "M",
+        height: 184,
+        department: "Logistics",
+      },
+      {
+        employeeId: "EMP-1045",
+        name: "Neha Kapoor",
+        gender: "F",
+        height: 168,
+        department: "Operations",
+      },
+      {
+        employeeId: "EMP-1046",
+        name: "Vikram Rao",
+        gender: "M",
+        height: 172,
+        department: "Security",
+      },
+      {
+        employeeId: "EMP-1047",
+        name: "Ishita Banerjee",
+        gender: "F",
+        height: 159,
+        department: "HR",
+      },
+      {
+        employeeId: "EMP-1048",
+        name: "Karthik Nair",
+        gender: "M",
+        height: 176,
+        department: "Logistics",
+      },
+      {
+        employeeId: "EMP-1049",
+        name: "Sana Khan",
+        gender: "F",
+        height: 165,
+        department: "Operations",
+      },
     ];
     const n = store.add(sample);
     setMsg(`Loaded ${n} sample employees.`);
@@ -50,8 +92,11 @@ export function CsvUpload() {
             const department = pick(r, ["department", "dept", "team"]);
             const height = parseFloat(heightStr);
             if (!name || !employeeId || isNaN(height)) continue;
-            const gender: Person["gender"] =
-              genderRaw.startsWith("M") ? "M" : genderRaw.startsWith("F") ? "F" : "U";
+            const gender: Person["gender"] = genderRaw.startsWith("M")
+              ? "M"
+              : genderRaw.startsWith("F")
+                ? "F"
+                : "U";
             const row: Omit<Person, "id" | "status"> = { name, employeeId, height, gender };
             if (department) row.department = department;
             rows.push(row);
@@ -77,7 +122,8 @@ export function CsvUpload() {
         <div>
           <h3 className="font-display text-lg font-semibold">Import roster</h3>
           <p className="text-sm text-muted-foreground mt-1">
-            CSV with columns: <span className="font-mono text-xs">name, employee id, gender, height</span>
+            CSV with columns:{" "}
+            <span className="font-mono text-xs">name, employee id, gender, height</span>
           </p>
         </div>
         <div className="flex items-center gap-2">

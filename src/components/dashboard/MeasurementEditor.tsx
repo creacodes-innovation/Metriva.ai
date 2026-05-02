@@ -45,7 +45,9 @@ export function MeasurementEditor({ person, onClose }: { person: Person; onClose
           </div>
           <div className="text-right">
             <div className={`font-display text-2xl font-bold ${confColor}`}>{conf}%</div>
-            <div className="text-[10px] font-mono text-muted-foreground tracking-wider">CONFIDENCE</div>
+            <div className="text-[10px] font-mono text-muted-foreground tracking-wider">
+              CONFIDENCE
+            </div>
           </div>
         </header>
 

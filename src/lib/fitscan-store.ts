@@ -91,11 +91,7 @@ export const store = {
 };
 
 export function usePeople() {
-  return useSyncExternalStore(
-    store.subscribe,
-    store.get,
-    () => [] as Person[],
-  );
+  return useSyncExternalStore(store.subscribe, store.get, () => [] as Person[]);
 }
 
 // Mock measurement generator — derives plausible values from height/gender
@@ -116,6 +112,7 @@ export function generateMockScan(p: Person): { measurements: Measurements; confi
 
   // Confidence: 70-99, with small chance of low score
   const roll = Math.random();
-  const confidence = roll < 0.12 ? 60 + Math.floor(Math.random() * 12) : 85 + Math.floor(Math.random() * 14);
+  const confidence =
+    roll < 0.12 ? 60 + Math.floor(Math.random() * 12) : 85 + Math.floor(Math.random() * 14);
   return { measurements, confidence };
 }

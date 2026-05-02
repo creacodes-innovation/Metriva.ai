@@ -17,10 +17,18 @@ export function Nav() {
         </Link>
 
         <nav className="hidden md:flex items-center gap-8 text-sm text-muted-foreground">
-          <a href="#how" className="hover:text-foreground transition-colors story-link">How it works</a>
-          <a href="#features" className="hover:text-foreground transition-colors story-link">Features</a>
-          <a href="#use-cases" className="hover:text-foreground transition-colors story-link">Use cases</a>
-          <a href="#accuracy" className="hover:text-foreground transition-colors story-link">Accuracy</a>
+          <a href="#how" className="hover:text-foreground transition-colors story-link">
+            How it works
+          </a>
+          <a href="#features" className="hover:text-foreground transition-colors story-link">
+            Features
+          </a>
+          <a href="#use-cases" className="hover:text-foreground transition-colors story-link">
+            Use cases
+          </a>
+          <a href="#accuracy" className="hover:text-foreground transition-colors story-link">
+            Accuracy
+          </a>
         </nav>
 
         <div className="flex items-center gap-3">

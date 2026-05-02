@@ -73,15 +73,29 @@ export function CaptureModal({ person, onClose }: { person: Person; onClose: () 
           {/* Faux camera viewport */}
           <div className="mt-5 relative aspect-[4/3] rounded-lg border border-border bg-background overflow-hidden grid-bg">
             <div className="absolute inset-0 grid place-items-center">
-              <svg viewBox="0 0 60 120" className="h-3/4 text-lime/70" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <svg
+                viewBox="0 0 60 120"
+                className="h-3/4 text-lime/70"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+              >
                 <circle cx="30" cy="12" r="7" />
-                <path d="M30 19 V70 M18 30 H42 M22 70 L18 110 M38 70 L42 110" strokeLinecap="round" />
+                <path
+                  d="M30 19 V70 M18 30 H42 M22 70 L18 110 M38 70 L42 110"
+                  strokeLinecap="round"
+                />
               </svg>
             </div>
             {!done && (
               <div className="pointer-events-none absolute inset-x-0 top-0 h-16 scan-line opacity-70 animate-scan" />
             )}
-            {["top-2 left-2 border-t-2 border-l-2", "top-2 right-2 border-t-2 border-r-2", "bottom-2 left-2 border-b-2 border-l-2", "bottom-2 right-2 border-b-2 border-r-2"].map((c) => (
+            {[
+              "top-2 left-2 border-t-2 border-l-2",
+              "top-2 right-2 border-t-2 border-r-2",
+              "bottom-2 left-2 border-b-2 border-l-2",
+              "bottom-2 right-2 border-b-2 border-r-2",
+            ].map((c) => (
               <div key={c} className={`absolute w-5 h-5 border-lime ${c}`} />
             ))}
             <div className="absolute bottom-2 left-2 right-2 font-mono text-[10px] text-lime flex justify-between">

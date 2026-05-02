@@ -40,8 +40,8 @@ export function PeopleTable() {
   }, [people, q, filter]);
 
   // Keep the modal in sync with store updates so edit-after-scan shows fresh data
-  const liveScanning = scanning ? people.find((p) => p.id === scanning.id) ?? null : null;
-  const liveEditing = editing ? people.find((p) => p.id === editing.id) ?? null : null;
+  const liveScanning = scanning ? (people.find((p) => p.id === scanning.id) ?? null) : null;
+  const liveEditing = editing ? (people.find((p) => p.id === editing.id) ?? null) : null;
 
   const counts: Record<Status | "all", number> = {
     all: people.length,
@@ -108,18 +108,30 @@ export function PeopleTable() {
                 <tr key={p.id} className="border-b border-border/60 hover:bg-surface-elevated/40">
                   <td className="px-5 py-3">
                     <div className="font-medium">{p.name}</div>
-                    <div className="font-mono text-xs text-muted-foreground">{p.employeeId} · {p.gender}</div>
+                    <div className="font-mono text-xs text-muted-foreground">
+                      {p.employeeId} · {p.gender}
+                    </div>
                   </td>
                   <td className="px-3 py-3 text-muted-foreground">{p.department ?? "—"}</td>
                   <td className="px-3 py-3 font-mono tabular-nums">{p.height}</td>
                   <td className="px-3 py-3">
-                    <span className={`inline-flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-wider px-2 py-1 rounded border ${STATUS_STYLES[p.status]}`}>
+                    <span
+                      className={`inline-flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-wider px-2 py-1 rounded border ${STATUS_STYLES[p.status]}`}
+                    >
                       {STATUS_LABEL[p.status]}
                     </span>
                   </td>
                   <td className="px-3 py-3 font-mono text-xs">
                     {p.confidence != null ? (
-                      <span className={p.confidence >= 85 ? "text-lime" : p.confidence >= 75 ? "text-amber-300" : "text-red-400"}>
+                      <span
+                        className={
+                          p.confidence >= 85
+                            ? "text-lime"
+                            : p.confidence >= 75
+                              ? "text-amber-300"
+                              : "text-red-400"
+                        }
+                      >
                         {p.confidence}%
                       </span>
                     ) : (
@@ -136,14 +148,15 @@ export function PeopleTable() {
                           {p.status === "flagged" ? "Re-scan" : "Scan"}
                         </button>
                       )}
-                      {(p.status === "review" || p.status === "done" || p.status === "flagged") && p.measurements && (
-                        <button
-                          onClick={() => setEditing(p)}
-                          className="text-xs px-3 py-1.5 rounded-md border border-border hover:bg-surface-elevated transition"
-                        >
-                          {p.status === "done" ? "View" : "Review"}
-                        </button>
-                      )}
+                      {(p.status === "review" || p.status === "done" || p.status === "flagged") &&
+                        p.measurements && (
+                          <button
+                            onClick={() => setEditing(p)}
+                            className="text-xs px-3 py-1.5 rounded-md border border-border hover:bg-surface-elevated transition"
+                          >
+                            {p.status === "done" ? "View" : "Review"}
+                          </button>
+                        )}
                       <button
                         onClick={() => store.remove(p.id)}
                         className="text-xs text-muted-foreground hover:text-red-400 transition px-1"

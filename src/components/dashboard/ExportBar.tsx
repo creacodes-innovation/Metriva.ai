@@ -50,7 +50,9 @@ export function ExportBar() {
         <div className="grid grid-cols-5 gap-6">
           {stats.map((s) => (
             <div key={s.label}>
-              <div className={`font-display text-2xl font-bold tabular-nums ${s.color}`}>{s.value}</div>
+              <div className={`font-display text-2xl font-bold tabular-nums ${s.color}`}>
+                {s.value}
+              </div>
               <div className="text-[10px] font-mono uppercase tracking-wider text-muted-foreground mt-0.5">
                 {s.label}
               </div>

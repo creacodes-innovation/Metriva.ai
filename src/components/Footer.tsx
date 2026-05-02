@@ -14,8 +14,8 @@ export function Footer() {
               </span>
             </div>
             <p className="text-sm text-muted-foreground max-w-sm leading-relaxed">
-              The automated body measurement app for high-volume tailoring,
-              uniforms, and corporate outfitting. Built for ateliers, deployed worldwide.
+              The automated body measurement app for high-volume tailoring, uniforms, and corporate
+              outfitting. Built for ateliers, deployed worldwide.
             </p>
           </div>
 
@@ -29,7 +29,12 @@ export function Footer() {
               <ul className="space-y-2.5 text-sm">
                 {c.l.map((i) => (
                   <li key={i}>
-                    <a href="#" className="text-muted-foreground hover:text-royal transition-colors story-link">{i}</a>
+                    <a
+                      href="#"
+                      className="text-muted-foreground hover:text-royal transition-colors story-link"
+                    >
+                      {i}
+                    </a>
                   </li>
                 ))}
               </ul>

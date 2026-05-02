@@ -8,7 +8,10 @@ export const Route = createFileRoute("/dashboard")({
   head: () => ({
     meta: [
       { title: "Operator dashboard — Metriva.ai" },
-      { name: "description", content: "Import rosters, run scans, review measurements, and export to Excel." },
+      {
+        name: "description",
+        content: "Import rosters, run scans, review measurements, and export to Excel.",
+      },
     ],
   }),
   component: DashboardPage,
@@ -32,10 +35,7 @@ function DashboardPage() {
               OPERATOR
             </span>
           </Link>
-          <Link
-            to="/"
-            className="text-sm text-muted-foreground hover:text-foreground transition"
-          >
+          <Link to="/" className="text-sm text-muted-foreground hover:text-foreground transition">
             ← Back to site
           </Link>
         </div>

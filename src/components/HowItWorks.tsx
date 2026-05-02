@@ -30,9 +30,12 @@ export function HowItWorks() {
     <section id="how" className="py-28 relative">
       <div className="max-w-7xl mx-auto px-6">
         <div className="max-w-2xl mb-16 animate-fade-up">
-          <p className="text-xs font-mono uppercase tracking-[0.2em] text-royal mb-4">— How it works</p>
+          <p className="text-xs font-mono uppercase tracking-[0.2em] text-royal mb-4">
+            — How it works
+          </p>
           <h2 className="font-display text-4xl sm:text-5xl font-bold leading-tight text-balance">
-            From a folder of names <br /> to a <span className="brand-text">production-ready</span> spec sheet.
+            From a folder of names <br /> to a <span className="brand-text">production-ready</span>{" "}
+            spec sheet.
           </h2>
         </div>
 
@@ -45,7 +48,12 @@ export function HowItWorks() {
             >
               <div className="flex items-center justify-between mb-8">
                 <div className="font-mono text-xs text-royal">STEP {s.n}</div>
-                <span className="text-2xl grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all" aria-hidden>{s.icon}</span>
+                <span
+                  className="text-2xl grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all"
+                  aria-hidden
+                >
+                  {s.icon}
+                </span>
               </div>
               <h3 className="font-display text-xl font-semibold mb-3">{s.t}</h3>
               <p className="text-sm text-muted-foreground leading-relaxed">{s.d}</p>
